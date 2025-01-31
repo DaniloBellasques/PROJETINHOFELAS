@@ -11,7 +11,7 @@
 
         <div class="input-box">
             <div class="gender-input">
-                <label>Costuma ir ao podólogo?</label>
+                <label>Frequenta podólogo?</label>
                 <input type="radio" name="frequenta_podologo" id="podologo-sim" value="Sim" required>
                 <label for="podologo-sim">Sim</label>
                 <input type="radio" name="frequenta_podologo" id="podologo-nao" value="Não">
@@ -19,18 +19,18 @@
             </div>
 
             <div class="gender-input">
-                <label for="frequencia_podologo">Com qual frequência?</label>
-                <input type="text" id="frequencia_podologo" name="frequencia_podologo">
+                <label for="frequencia_podologo">Frequência ao podólogo:</label>
+                <input type="text" id="frequencia_podologo" name="frequencia_podologo" maxlength="255">
             </div>
 
             <div class="gender-input">
-                <label>Faz uso de medicamentos?</label>
+                <label>Uso de medicamentos?</label>
                 <input type="radio" name="uso_medicamentos" id="medicamentos-sim" value="Sim" required>
                 <label for="medicamentos-sim">Sim</label>
                 <input type="radio" name="uso_medicamentos" id="medicamentos-nao" value="Não">
                 <label for="medicamentos-nao">Não</label>
                 <div class="text-input">
-                    <label for="quais_medicamentos">Quais?</label>
+                    <label for="quais_medicamentos">Quais medicamentos?</label>
                     <input type="text" id="quais_medicamentos" name="quais_medicamentos">
                 </div>
             </div>
@@ -50,7 +50,7 @@
 
             <div class="gender-input">
                 <label>Posição de trabalho:</label>
-                <select name="posicao_trabalho" required>
+                <select name="posicao_trabalho" id="posicao_trabalho" required>
                     <option value="Em pé">Em pé</option>
                     <option value="Sentado">Sentado</option>
                     <option value="Andando">Andando</option>
@@ -59,11 +59,11 @@
 
             <div class="gender-input">
                 <label for="duracao_trabalho">Duração do trabalho:</label>
-                <input type="text" id="duracao_trabalho" name="duracao_trabalho" required>
+                <input type="text" id="duracao_trabalho" name="duracao_trabalho" maxlength="255" required>
             </div>
 
             <div class="gender-input">
-                <label>Tempo em pé:</label>
+                <label>Tempo em pé?</label>
                 <input type="radio" name="tempo_em_pe" id="tempo-pe-sim" value="Sim" required>
                 <label for="tempo-pe-sim">Sim</label>
                 <input type="radio" name="tempo_em_pe" id="tempo-pe-nao" value="Não">
@@ -71,7 +71,7 @@
             </div>
 
             <div class="gender-input">
-                <label>Tempo sentado:</label>
+                <label>Tempo sentado?</label>
                 <input type="radio" name="tempo_sentado" id="tempo-sentado-sim" value="Sim" required>
                 <label for="tempo-sentado-sim">Sim</label>
                 <input type="radio" name="tempo_sentado" id="tempo-sentado-nao" value="Não">
@@ -79,7 +79,7 @@
             </div>
 
             <div class="gender-input">
-                <label>Tempo caminhando:</label>
+                <label>Tempo caminhando?</label>
                 <input type="radio" name="tempo_caminhando" id="tempo-caminhando-sim" value="Sim" required>
                 <label for="tempo-caminhando-sim">Sim</label>
                 <input type="radio" name="tempo_caminhando" id="tempo-caminhando-nao" value="Não">
@@ -87,12 +87,12 @@
             </div>
 
             <div class="gender-input">
-                <label for="numero_calcado">N° do calçado:</label>
-                <input type="text" id="numero_calcado" name="numero_calcado" required>
+                <label for="numero_calcado">Número do calçado:</label>
+                <input type="text" id="numero_calcado" name="numero_calcado" maxlength="10" required>
             </div>
 
             <div class="gender-input">
-                <label for="tipo_calcado_diario">Tipo de calçado de uso diário:</label>
+                <label for="tipo_calcado_diario">Tipo de calçado diário:</label>
                 <select name="tipo_calcado_diario" id="tipo_calcado_diario" required>
                     <option value="Chinelo">Chinelo</option>
                     <option value="Tênis">Tênis</option>
@@ -101,16 +101,16 @@
             </div>
 
             <div class="gender-input">
-                <label for="tipo_calcado_qual">Tipo específico de calçado:</label>
+                <label for="tipo_calcado_qual">Especificação do calçado:</label>
                 <select name="tipo_calcado_qual" id="tipo_calcado_qual" required>
-                    <option value="Ortopédica">Ortopédica</option>
+                    <option value="Ortopédico">Ortopédico</option>
                     <option value="Descanso">Descanso</option>
                     <option value="Outro">Outro</option>
                 </select>
             </div>
 
             <div class="gender-input">
-                <label>É fumante?</label>
+                <label>Fumante?</label>
                 <input type="radio" name="fumante" id="fumante-sim" value="Sim" required>
                 <label for="fumante-sim">Sim</label>
                 <input type="radio" name="fumante" id="fumante-nao" value="Não">
@@ -118,7 +118,7 @@
             </div>
 
             <div class="gender-input">
-                <label>Ciclo de menstruação regular?</label>
+                <label>Ciclo menstrual regular?</label>
                 <input type="radio" name="ciclo_menstruacao_regular" id="menstruacao-sim" value="Sim" required>
                 <label for="menstruacao-sim">Sim</label>
                 <input type="radio" name="ciclo_menstruacao_regular" id="menstruacao-nao" value="Não">
@@ -126,7 +126,7 @@
             </div>
 
             <div class="gender-input">
-                <label>Está gestante?</label>
+                <label>Gestante?</label>
                 <input type="radio" name="gestante" id="gestante-sim" value="Sim" required>
                 <label for="gestante-sim">Sim</label>
                 <input type="radio" name="gestante" id="gestante-nao" value="Não">
@@ -134,7 +134,7 @@
             </div>
 
             <div class="gender-input">
-                <label>Está amamentando?</label>
+                <label>Amamentando?</label>
                 <input type="radio" name="amamentando" id="amamentando-sim" value="Sim" required>
                 <label for="amamentando-sim">Sim</label>
                 <input type="radio" name="amamentando" id="amamentando-nao" value="Não">
@@ -142,7 +142,7 @@
             </div>
 
             <div class="gender-input">
-                <label for="dum">DUM:</label>
+                <label for="dum">Data da Última Menstruação:</label>
                 <input type="date" id="dum" name="dum">
             </div>
 
@@ -155,18 +155,18 @@
             </div>
 
             <div class="gender-input">
-                <label for="frequencia_atividade_fisica">Frequência da atividade física:</label>
-                <input type="text" id="frequencia_atividade_fisica" name="frequencia_atividade_fisica">
+    <label for="frequencia_atividade_fisica">Frequência da atividade física:</label>
+    <input type="text" id="frequencia_atividade_fisica" name="frequencia_atividade_fisica" maxlength="255">
+</div>
+
+            <div class="gender-input">
+                <label for="esporte_atividade">Esporte/Atividade:</label>
+                <input type="text" id="esporte_atividade" name="esporte_atividade" maxlength="255">
             </div>
 
             <div class="gender-input">
-                <label for="esporte_atividade">Qual esporte/atividade pratica?</label>
-                <input type="text" id="esporte_atividade" name="esporte_atividade">
-            </div>
-
-            <div class="gender-input">
-                <label for="tipo_calcado_esporte">Tipo de calçado usado no esporte:</label>
-                <input type="text" id="tipo_calcado_esporte" name="tipo_calcado_esporte">
+                <label for="tipo_calcado_esporte">Calçado para esporte:</label>
+                <input type="text" id="tipo_calcado_esporte" name="tipo_calcado_esporte" maxlength="255">
             </div>
         </div>
 

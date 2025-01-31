@@ -46,130 +46,230 @@ function saveData() {
        
    
         //saveData da ETAPA2
-    if (document.getElementById('queixa_principal')) {
-        sessionStorage.setItem('queixa_principal', document.getElementById('queixa_principal').value);
-    }
-    if (document.querySelector('input[name="frequencia_podologo"]:checked')) {
-        sessionStorage.setItem('frequencia_podologo', document.querySelector('input[name="frequencia_podologo"]:checked').value);
-    }
-    if (document.getElementById('frequencia_visita_podologo')) {
-        sessionStorage.setItem('frequencia_visita_podologo', document.getElementById('frequencia_visita_podologo').value);
-    }
-    if (document.querySelector('input[name="uso_medicamento"]:checked')) {
-        sessionStorage.setItem('uso_medicamento', document.querySelector('input[name="uso_medicamento"]:checked').value);
-    }
-    if (document.getElementById('tipo_medicamento')) {
-        sessionStorage.setItem('tipo_medicamento', document.getElementById('tipo_medicamento').value);
-    }
-    if (document.querySelector('input[name="possui_alergia"]:checked')) {
-        sessionStorage.setItem('possui_alergia', document.querySelector('input[name="possui_alergia"]:checked').value);
-    }  
-    if (document.getElementById('alergia_substancia')) {
-        sessionStorage.setItem('alergia_substancia', document.getElementById('alergia_substancia').value);
-    }
-    if (document.querySelector('input[name="posicao_trabalho"]:checked')) {
-        sessionStorage.setItem('posicao_trabalho', document.querySelector('input[name="posicao_trabalho"]:checked').value);
-    }  
-    if (document.getElementById('numero_calcado')) {
-        sessionStorage.setItem('numero_calcado', document.getElementById('numero_calcado').value);
-    }
-    if (document.getElementById('tipo_calcado')) {
-        sessionStorage.setItem('tipo_calcado', document.getElementById('tipo_calcado').value);
-    }
-    if (document.querySelector('input[name="tipo_palmilha"]:checked')) {
-        sessionStorage.setItem('tipo_palmilha', document.querySelector('input[name="tipo_palmilha"]:checked').value);
-    }
-    if (document.querySelector('input[name="fumante"]:checked')) {
-        sessionStorage.setItem('fumante', document.querySelector('input[name="fumante"]:checked').value);
-    }
-    if (document.querySelector('input[name="ciclo_menstrual"]:checked')) {
-        sessionStorage.setItem('ciclo_menstrual', document.querySelector('input[name="ciclo_menstrual"]:checked').value);
-    }
-    if (document.querySelector('input[name="gestante"]:checked')) {
-        sessionStorage.setItem('gestante', document.querySelector('input[name="gestante"]:checked').value);
-    }
-    if (document.querySelector('input[name="amamentando"]:checked')) {
-        sessionStorage.setItem('amamentando', document.querySelector('input[name="amamentado"]:checked').value);
-    }
-    if (document.querySelector('input[name="atividade_fisica"]:checked')) {
-        sessionStorage.setItem('atividade_fisica', document.querySelector('input[name="atividade_fisica"]:checked').value);
-    }
-    if (document.getElementById('frequencia_atividade_fisica')) {
-        sessionStorage.setItem('frequencia_atividade_fisica', document.getElementById('frequencia_atividade_fisica').value);
-    }
-    if (document.getElementById('tipo_esporte')) {
-        sessionStorage.setItem('tipo_esporte', document.getElementById('tipo_esporte').value);
-    }
-    if (document.getElementById('calcado_esporte')) {
-        sessionStorage.setItem('calcado_esporte', document.getElementById('calcado_esporte').value);
-    }
+        if (document.getElementById('queixa_principal')) {
+            sessionStorage.setItem('queixa_principal', document.getElementById('queixa_principal').value);
+        }
+        
+        if (document.querySelector('input[name="frequenta_podologo"]:checked')) {
+            sessionStorage.setItem('frequenta_podologo', document.querySelector('input[name="frequenta_podologo"]:checked').value);
+        }
+        
+        if (document.getElementById('frequencia_podologo')) {
+            sessionStorage.setItem('frequencia_podologo', document.getElementById('frequencia_podologo').value);
+        }
+        
+        if (document.querySelector('input[name="uso_medicamentos"]:checked')) {
+            sessionStorage.setItem('uso_medicamentos', document.querySelector('input[name="uso_medicamentos"]:checked').value);
+        }
+        
+        if (document.getElementById('quais_medicamentos')) {
+            sessionStorage.setItem('quais_medicamentos', document.getElementById('quais_medicamentos').value);
+        }
+        
+        if (document.querySelector('input[name="alergico"]:checked')) {
+            sessionStorage.setItem('alergico', document.querySelector('input[name="alergico"]:checked').value);
+        }
+        
+        if (document.getElementById('quais_substancias')) {
+            sessionStorage.setItem('quais_substancias', document.getElementById('quais_substancias').value);
+        }
+        
+        if (document.querySelector('input[name="posicao_trabalho"]:checked')) {
+            sessionStorage.setItem('posicao_trabalho', document.querySelector('input[name="posicao_trabalho"]:checked').value);
+        }
+        
+        if (document.getElementById('duracao_trabalho')) {
+            sessionStorage.setItem('duracao_trabalho', document.getElementById('duracao_trabalho').value);
+        }
+        
+        if (document.querySelector('input[name="tempo_em_pe"]:checked')) {
+            sessionStorage.setItem('tempo_em_pe', document.querySelector('input[name="tempo_em_pe"]:checked').value);
+        }
+        
+        if (document.querySelector('input[name="tempo_sentado"]:checked')) {
+            sessionStorage.setItem('tempo_sentado', document.querySelector('input[name="tempo_sentado"]:checked').value);
+        }
+        
+        if (document.querySelector('input[name="tempo_caminhando"]:checked')) {
+            sessionStorage.setItem('tempo_caminhando', document.querySelector('input[name="tempo_caminhando"]:checked').value);
+        }
+        
+        if (document.getElementById('numero_calcado')) {
+            sessionStorage.setItem('numero_calcado', document.getElementById('numero_calcado').value);
+        }
+        
+        if (document.getElementById('tipo_calcado_diario')) {
+            sessionStorage.setItem('tipo_calcado_diario', document.getElementById('tipo_calcado_diario').value);
+        }
+        
+        if (document.getElementById('tipo_calcado_qual')) {
+            sessionStorage.setItem('tipo_calcado_qual', document.getElementById('tipo_calcado_qual').value);
+        }
+        
+        if (document.querySelector('input[name="fumante"]:checked')) {
+            sessionStorage.setItem('fumante', document.querySelector('input[name="fumante"]:checked').value);
+        }
+        
+        if (document.querySelector('input[name="ciclo_menstruacao_regular"]:checked')) {
+            sessionStorage.setItem('ciclo_menstruacao_regular', document.querySelector('input[name="ciclo_menstruacao_regular"]:checked').value);
+        }
+        
+        if (document.querySelector('input[name="gestante"]:checked')) {
+            sessionStorage.setItem('gestante', document.querySelector('input[name="gestante"]:checked').value);
+        }
+        
+        if (document.querySelector('input[name="amamentando"]:checked')) {
+            sessionStorage.setItem('amamentando', document.querySelector('input[name="amamentando"]:checked').value);
+        }
+        
+        if (document.getElementById('dum')) {
+            sessionStorage.setItem('dum', document.getElementById('dum').value);
+        }
+        
+        if (document.querySelector('input[name="pratica_atividade_fisica"]:checked')) {
+            sessionStorage.setItem('pratica_atividade_fisica', document.querySelector('input[name="pratica_atividade_fisica"]:checked').value);
+        }
+        
+        if (document.getElementById('frequencia_atividade_fisica')) {
+            sessionStorage.setItem('frequencia_atividade_fisica', document.getElementById('frequencia_atividade_fisica').value);
+        }
+        
+        if (document.getElementById('esporte_atividade')) {
+            sessionStorage.setItem('esporte_atividade', document.getElementById('esporte_atividade').value);
+        }
+        
+        if (document.getElementById('tipo_calcado_esporte')) {
+            sessionStorage.setItem('tipo_calcado_esporte', document.getElementById('tipo_calcado_esporte').value);
+        }
    
  
-     //saveData ETAPA3
-     if (document.querySelector('input[name="osteoporose"]:checked')) {
-        sessionStorage.setItem('osteoporose', document.querySelector('input[name="osteoporose"]:checked').value);
-    }
-    if (document.querySelector('input[name="renal"]:checked')) {
-        sessionStorage.setItem('renal', document.querySelector('input[name="renal"]:checked').value);
-    }
-    if (document.querySelector('input[name="epilepsia"]:checked')) {
-        sessionStorage.setItem('epilepsia', document.querySelector('input[name="epilepsia"]:checked').value);
-    }
-    if (document.querySelector('input[name="hipotiroidismo"]:checked')) {
-        sessionStorage.setItem('hipotiroidismo', document.querySelector('input[name="hipotiroidismo"]:checked').value);
-    }
-    if (document.querySelector('input[name="hepatite"]:checked')) {
-        sessionStorage.setItem('hepatite', document.querySelector('input[name="hepatite"]:checked').value);
-    }
-    if (document.querySelector('input[name="cardiopatia"]:checked')) {
-        sessionStorage.setItem('cardiopatia', document.querySelector('input[name="cardiopatia"]:checked').value);
-    }
-    if (document.querySelector('input[name="hipertensao"]:checked')) {
-        sessionStorage.setItem('hipertensao', document.querySelector('input[name="hipertensao"]:checked').value);
-    }  
-    if (document.querySelector('input[name="reumatismo"]:checked')) {
-        sessionStorage.setItem('reumatismo', document.querySelector('input[name="reumatismo"]:checked').value);
-    }
-    if (document.querySelector('input[name="quimioRadio"]:checked')) {
-        sessionStorage.setItem('quimioRadio', document.querySelector('input[name="quimioRadio"]:checked').value);
-    }      
-    if (document.querySelector('input[name="hanseniase"]:checked')) {
-        sessionStorage.setItem('hanseniase', document.querySelector('input[name="hanseniase"]:checked').value);
-    }    
-    if (document.querySelector('input[name="oncologico"]:checked')) {
-        sessionStorage.setItem('oncologico', document.querySelector('input[name="oncologico"]:checked').value);
-    }
-    if (document.querySelector('input[name="cirurgia_mmii"]:checked')) {
-        sessionStorage.setItem('cirurgia_mmii', document.querySelector('input[name="cirurgia_mmii"]:checked').value);
-    }  
-    if (document.querySelector('input[name="marca_passo"]:checked')) {
-        sessionStorage.setItem('marca_passo', document.querySelector('input[name="marca_passo"]:checked').value);
-    }        
-    if (document.querySelector('input[name="alteracoes"]:checked')) {
-        sessionStorage.setItem('alteracoes', document.querySelector('input[name="alteracoes"]:checked').value);
-    }            
-    if (document.querySelector('input[name="hipotensao"]:checked')) {
-        sessionStorage.setItem('hipotensao', document.querySelector('input[name="hipotensao"]:checked').value);
-    }    
-    if (document.querySelector('input[name="insulina"]:checked')) {
-        sessionStorage.setItem('insulina', document.querySelector('input[name="insulina"]:checked').value);
-    }  
-    if (document.querySelector('input[name="dieta_hidrica"]:checked')) {
-        sessionStorage.setItem('dieta_hidrica', document.querySelector('input[name="dieta_hidrica"]:checked').value);
-    }
-    if (document.getElementById('injetavel')) {
-        sessionStorage.setItem('injetavel', document.getElementById('injetavel').value);
-    }
-    if (document.getElementById('dieta_alimentar')) {
-        sessionStorage.setItem('dieta_alimentar', document.getElementById('dieta_alimentar').value);
-    }
-    if (document.getElementById('via_oral')) {
-        sessionStorage.setItem('via_oral', document.getElementById('via_oral').value);
-    }
-    if (document.getElementById('taxa_glicemica')) {
-        sessionStorage.setItem('taxa_glicemica', document.getElementById('taxa_glicemica').value);
-    }
-   
+    // Save data to sessionStorage
+if (document.querySelector('input[name="Osteoporose"]:checked')) {
+    sessionStorage.setItem('Osteoporose', document.querySelector('input[name="Osteoporose"]:checked').value);
+}
+if (document.querySelector('input[name="Renal"]:checked')) {
+    sessionStorage.setItem('Renal', document.querySelector('input[name="Renal"]:checked').value);
+}
+if (document.querySelector('input[name="Epilepsia"]:checked')) {
+    sessionStorage.setItem('Epilepsia', document.querySelector('input[name="Epilepsia"]:checked').value);
+}
+if (document.querySelector('input[name="Quimioterapia_Radioterapia"]:checked')) {
+    sessionStorage.setItem('Quimioterapia_Radioterapia', document.querySelector('input[name="Quimioterapia_Radioterapia"]:checked').value);
+}
+if (document.querySelector('input[name="Hipotireoidismo"]:checked')) {
+    sessionStorage.setItem('Hipotireoidismo', document.querySelector('input[name="Hipotireoidismo"]:checked').value);
+}
+if (document.querySelector('input[name="Hepatite"]:checked')) {
+    sessionStorage.setItem('Hepatite', document.querySelector('input[name="Hepatite"]:checked').value);
+}
+if (document.querySelector('input[name="Antecedente_Oncologico"]:checked')) {
+    sessionStorage.setItem('Antecedente_Oncologico', document.querySelector('input[name="Antecedente_Oncologico"]:checked').value);
+}
+if (document.querySelector('input[name="Cardiopatia"]:checked')) {
+    sessionStorage.setItem('Cardiopatia', document.querySelector('input[name="Cardiopatia"]:checked').value);
+}
+if (document.querySelector('input[name="Hipertensao"]:checked')) {
+    sessionStorage.setItem('Hipertensao', document.querySelector('input[name="Hipertensao"]:checked').value);
+}
+if (document.querySelector('input[name="Reumatismo"]:checked')) {
+    sessionStorage.setItem('Reumatismo', document.querySelector('input[name="Reumatismo"]:checked').value);
+}
+if (document.querySelector('input[name="Hanseniase"]:checked')) {
+    sessionStorage.setItem('Hanseniase', document.querySelector('input[name="Hanseniase"]:checked').value);
+}
+if (document.querySelector('input[name="Cirurgia_MMII"]:checked')) {
+    sessionStorage.setItem('Cirurgia_MMII', document.querySelector('input[name="Cirurgia_MMII"]:checked').value);
+}
+if (document.querySelector('input[name="Marca_Passo"]:checked')) {
+    sessionStorage.setItem('Marca_Passo', document.querySelector('input[name="Marca_Passo"]:checked').value);
+}
+if (document.querySelector('input[name="Hipotensao"]:checked')) {
+    sessionStorage.setItem('Hipotensao', document.querySelector('input[name="Hipotensao"]:checked').value);
+}
+if (document.querySelector('input[name="Insulina"]:checked')) {
+    sessionStorage.setItem('Insulina', document.querySelector('input[name="Insulina"]:checked').value);
+}
+if (document.querySelector('input[name="Dieta_Hidrica"]:checked')) {
+    sessionStorage.setItem('Dieta_Hidrica', document.querySelector('input[name="Dieta_Hidrica"]:checked').value);
+}
+if (document.querySelector('input[name="Injetavel"]:checked')) {
+    sessionStorage.setItem('Injetavel', document.querySelector('input[name="Injetavel"]:checked').value);
+}
+if (document.querySelector('input[name="Dieta_Alimentar"]:checked')) {
+    sessionStorage.setItem('Dieta_Alimentar', document.querySelector('input[name="Dieta_Alimentar"]:checked').value);
+}
+if (document.querySelector('input[name="Via_Oral"]:checked')) {
+    sessionStorage.setItem('Via_Oral', document.querySelector('input[name="Via_Oral"]:checked').value);
+}
+if (document.querySelector('input[name="Taxa_Glicemica"]')) {
+    sessionStorage.setItem('Taxa_Glicemica', document.querySelector('input[name="Taxa_Glicemica"]').value);
+}
+if (document.querySelector('input[name="Alteracoes_Vasculares"]:checked')) {
+    sessionStorage.setItem('Alteracoes_Vasculares', document.querySelector('input[name="Alteracoes_Vasculares"]:checked').value);
+}
+
+// Submission function
+function submitEtapa3Data() {
+    // Create etapa3Data object from sessionStorage
+    const etapa3Data = {
+        Osteoporose: sessionStorage.getItem('Osteoporose'),
+        Renal: sessionStorage.getItem('Renal'),
+        Epilepsia: sessionStorage.getItem('Epilepsia'),
+        Quimioterapia_Radioterapia: sessionStorage.getItem('Quimioterapia_Radioterapia'),
+        Hipotireoidismo: sessionStorage.getItem('Hipotireoidismo'),
+        Hepatite: sessionStorage.getItem('Hepatite'),
+        Antecedente_Oncologico: sessionStorage.getItem('Antecedente_Oncologico'),
+        Cardiopatia: sessionStorage.getItem('Cardiopatia'),
+        Hipertensao: sessionStorage.getItem('Hipertensao'),
+        Reumatismo: sessionStorage.getItem('Reumatismo'),
+        Hanseniase: sessionStorage.getItem('Hanseniase'),
+        Cirurgia_MMII: sessionStorage.getItem('Cirurgia_MMII'),
+        Marca_Passo: sessionStorage.getItem('Marca_Passo'),
+        Hipotensao: sessionStorage.getItem('Hipotensao'),
+        Insulina: sessionStorage.getItem('Insulina'),
+        Dieta_Hidrica: sessionStorage.getItem('Dieta_Hidrica'),
+        Injetavel: sessionStorage.getItem('Injetavel'),
+        Dieta_Alimentar: sessionStorage.getItem('Dieta_Alimentar'),
+        Via_Oral: sessionStorage.getItem('Via_Oral'),
+        Taxa_Glicemica: parseFloat(sessionStorage.getItem('Taxa_Glicemica')), // Converte para número
+        Alteracoes_Vasculares: sessionStorage.getItem('Alteracoes_Vasculares'),
+        id_cliente: sessionStorage.getItem('id_cliente') // Certifique-se de que isso está definido
+    };
+
+    // Log the data for debugging
+    console.log('Submitting Etapa3 Data:', etapa3Data);
+
+    // Submit data to Sequelize
+    Etapa3.create(etapa3Data)
+        .then(result => {
+            console.log('Data inserted successfully:', result);
+
+            // Clear session storage after successful submission
+            Object.keys(etapa3Data).forEach(key => {
+                if (key !== 'id_cliente') {
+                    sessionStorage.removeItem(key);
+                }
+            });
+
+            // Redirect or show success message
+            window.location.href = '/next-step'; // Adjust as needed
+        })
+        .catch(error => {
+            console.error('Error inserting data:', error);
+            if (error.errors) {
+                error.errors.forEach(err => {
+                    console.error(`${err.path}: ${err.message}`);
+                });
+            }
+            alert('Erro ao salvar dados. Por favor, verifique as informações e tente novamente.');
+        });
+}
+          
+          // Attach to form submission if needed
+          document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            submitEtapa3Data(); // Call our custom submission function
+          });
    
     //etapa4
     document.getElementById('submit-button').addEventListener('click', () => {
@@ -585,6 +685,48 @@ if (document.getElementById('via_oral')) {
 if (document.getElementById('taxa_glicemica')) {
     sessionStorage.setItem('taxa_glicemica', document.getElementById('taxa_glicemica').value);
 }
+
+//saveData2
+
+const camposCheckbox = [
+    'frequenta_podologo', 'uso_medicamentos', 'alergico', 'posicao_trabalho',
+    'tempo_em_pe', 'tempo_sentado', 'tempo_caminhando', 'tipo_calcado_diario',
+    'tipo_calcado_qual', 'fumante', 'ciclo_menstruacao_regular', 'gestante',
+    'amamentando', 'pratica_atividade_fisica'
+];
+
+const camposTexto = [
+    'queixa_principal', 'frequencia_podologo', 'quais_medicamentos',
+    'quais_substancias', 'duracao_trabalho', 'numero_calcado',
+    'frequencia_atividade_fisica', 'esporte_atividade', 'tipo_calcado_esporte'
+];
+
+const camposData = ['dum'];
+
+// Salvar valores dos inputs do tipo "radio" ou "checkbox"
+camposCheckbox.forEach(campo => {
+    const elementoSelecionado = document.querySelector(`input[name="${campo}"]:checked`);
+    if (elementoSelecionado) {
+        sessionStorage.setItem(campo, elementoSelecionado.value);
+    }
+});
+
+// Salvar valores dos inputs do tipo "text"
+camposTexto.forEach(campo => {
+    const elemento = document.getElementById(campo);
+    if (elemento) {
+        sessionStorage.setItem(campo, elemento.value);
+    }
+});
+
+// Salvar valores dos inputs do tipo "date"
+camposData.forEach(campo => {
+    const elemento = document.getElementById(campo);
+    if (elemento && elemento.value) {
+        sessionStorage.setItem(campo, new Date(elemento.value).toISOString());
+    }
+});
+
 // Preencher os campos ao carregar a página
 window.onload = populateForm;
 

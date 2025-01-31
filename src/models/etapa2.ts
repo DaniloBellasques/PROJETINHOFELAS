@@ -3,6 +3,7 @@ import { sequelize } from '../instances/mysql';
 
 export interface Etapa2Instance extends Model {
     id: number;
+    id_cliente:number;
     queixa_principal: string;
     frequenta_podologo: 'Sim' | 'Não';
     frequencia_podologo: string;
@@ -34,6 +35,14 @@ export const Etapa2 = sequelize.define<Etapa2Instance>('Etapa2', {
         primaryKey: true,
         type: DataTypes.INTEGER,
         autoIncrement: true
+    },
+    id_cliente: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        references: {
+            model: 'cliente', // Nome da tabela referenciada
+            key: 'id_cliente' // Nome da coluna referenciada
+        }
     },
     queixa_principal: {
         type: DataTypes.TEXT,
@@ -132,6 +141,8 @@ export const Etapa2 = sequelize.define<Etapa2Instance>('Etapa2', {
         allowNull: true
     }
 }, {
+    
     tableName: 'dados_gerais', // Nome da tabela no banco de dados
     timestamps: false // Desabilita os campos `createdAt` e `updatedAt`
 });
+

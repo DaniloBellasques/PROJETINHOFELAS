@@ -27,7 +27,7 @@ export const Etapa1 = sequelize.define<Etapa1Instance>('Etapa1', {
     },
     nome: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     
     endereco: {
@@ -84,7 +84,7 @@ export const Etapa1 = sequelize.define<Etapa1Instance>('Etapa1', {
     },
     sexo: {
         type: DataTypes.ENUM('Masculino', 'Feminino', 'Outro'),
-        allowNull: false
+        allowNull: true
     }
 }, {
     tableName: 'cliente',

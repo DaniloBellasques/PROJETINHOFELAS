@@ -7,6 +7,7 @@ import { Consulta } from '../models/Consulta';
  // Remove this line
 import { DadosClinicos } from '../models/DadosClinicos';
 import { Etapa1 } from '../models/Etapa1';
+import { Etapa3 } from '../models/etapa3';
 
 
 
@@ -32,47 +33,55 @@ export const index = (req: Request, res: Response) => {
 let formData: { nome?: string; endereco?: string; bairro?: string; cidade?: string; estado?: string; cep?: string; tel_res?: string; telefone?: string; tel_emergencia?: string; data_nascimento?: Date; sexo?: string; profissao?: string; email?: string; contato?: string; } = {};
 
 let formData2: {
-    queixa?: string;
-    podologo?: string;
-    frequencia?: string;
-    medicamentos?: string;
-    medicamentos_quais?: string;
-    alergico?: string;
-    substancias?: string;
-    posicao?: string[]; // Aqui está correto para múltiplos checkboxes
-    calcado_numero?: string;
-    calcado_tipo?: string;
-    fumante?: string;
-    menstruacao?: string;
-    gestante?: string;
-    dum?: Date; // A data será tratada como tipo Date
-    atividade?: string;
-    atividade_frequencia?: string;
+    queixa_principal?: string;
+    frequenta_podologo?: 'Sim' | 'Não';
+    frequencia_podologo?: string;
+    uso_medicamentos?: 'Sim' | 'Não';
+    quais_medicamentos?: string;
+    alergico?: 'Sim' | 'Não';
+    quais_substancias?: string;
+    posicao_trabalho?: 'Em pé' | 'Sentado' | 'Andando';
+    duracao_trabalho?: string;
+    tempo_em_pe?: 'Sim' | 'Não';
+    tempo_sentado?: 'Sim' | 'Não';
+    tempo_caminhando?: 'Sim' | 'Não';
+    numero_calcado?: string;
+    tipo_calcado_diario?: 'Chinelo' | 'Tênis' | 'Outro';
+    tipo_calcado_qual?: 'Ortopédico' | 'Descanso' | 'Outro';
+    fumante?: 'Sim' | 'Não';
+    ciclo_menstruacao_regular?: 'Sim' | 'Não';
+    gestante?: 'Sim' | 'Não';
+    amamentando?: 'Sim' | 'Não';
+    dum?: Date;
+    pratica_atividade_fisica?: 'Sim' | 'Não';
+    frequencia_atividade?: string;
+    esporte_atividade?: string;
+    tipo_calcado_esporte?: string;
 } = {};
 
 
 let formData3: {
-    osteoporose?: boolean;
-    renal?: boolean;
-    epilepsia?: boolean;
-    quimioRadio?: boolean;
-    hipotiroidismo?: boolean;
-    hepatite?: boolean;
-    onco?: boolean;
-    cardiopatia?: boolean;
-    hipertensao?: boolean;
-    reumatismo?: boolean;
-    hanseniase?: boolean;
-    cirurgiaMMII?: boolean;
-    marcaPasso?: boolean;
-    hipotensao?: string;
-    insulina?: string;
-    dietaHidrica?: string;
-    injetavel?: boolean;
-    dietaAlimentar?: boolean;
-    viaOral?: boolean;
-    taxaGlicemica?: string;
-    vascular?: boolean;
+    Osteoporose?: boolean;
+    Renal?: boolean;
+    Epilepsia?: boolean;
+    Quimioterapia_Radioterapia?: boolean;
+    Hipotiroidismo?: boolean;
+    Antecedente_Oncologico?: boolean;
+    Hepatite?: boolean;
+    Cardiopatia?: boolean;
+    Hipotensao?: boolean;
+    Reumatismo?: boolean;
+    Hanseniase?: boolean;
+    Cirurgia_MMII?: boolean;
+    Marca_Passo?: boolean;
+    Hipertensao?: string;
+    Insulina?: string;
+    Dieta_Hidrica?: string;
+    Injetavel?: boolean;
+    Dieta_Alimentar?: boolean;
+    Via_Oral?: boolean;
+    Taxa_Glicemica?: string;
+    Alteracoes_Vasculares?: boolean;
 } = {};
 
 
@@ -185,27 +194,56 @@ export const etapa2 = (req: Request, res: Response) => {
 
 export const etapa2Post = (req: Request, res: Response) => {
     const { 
-        queixa, podologo, frequencia, medicamentos, medicamentos_quais, alergico, substancias, posicao, 
-        calcado_numero, calcado_tipo, fumante, menstruacao, gestante, dum, atividade, atividade_frequencia
-        
+        queixa_principal,
+        frequenta_podologo,
+        frequencia_podologo,
+        uso_medicamentos,
+        quais_medicamentos,
+        alergico,
+        quais_substancias,
+        posicao_trabalho,
+        duracao_trabalho,
+        tempo_em_pe,
+        tempo_sentado,
+        tempo_caminhando,
+        numero_calcado,
+        tipo_calcado_diario,
+        tipo_calcado_qual,
+        fumante,
+        ciclo_menstruacao_regular,
+        gestante,
+        amamentando,
+        dum,
+        pratica_atividade_fisica,
+        frequencia_atividade,
+        esporte_atividade,
+        tipo_calcado_esporte
     } = req.body;
 
-    formData2.queixa = queixa;
-    formData2.podologo = podologo;
-    formData2.frequencia = frequencia;
-    formData2.medicamentos = medicamentos;
-    formData2.medicamentos_quais = medicamentos_quais;
+    formData2.queixa_principal = queixa_principal;
+    formData2.frequenta_podologo = frequenta_podologo;
+    formData2.frequencia_podologo = frequencia_podologo;
+    formData2.uso_medicamentos = uso_medicamentos;
+    formData2.quais_medicamentos = quais_medicamentos;
     formData2.alergico = alergico;
-    formData2.substancias = substancias;
-    formData2.posicao = posicao;
-    formData2.calcado_numero = calcado_numero;
-    formData2.calcado_tipo = calcado_tipo;
+    formData2.quais_substancias = quais_substancias;
+    formData2.posicao_trabalho = posicao_trabalho;
+    formData2.duracao_trabalho = duracao_trabalho;
+    formData2.tempo_em_pe = tempo_em_pe;
+    formData2.tempo_sentado = tempo_sentado;
+    formData2.tempo_caminhando = tempo_caminhando;
+    formData2.numero_calcado = numero_calcado;
+    formData2.tipo_calcado_diario = tipo_calcado_diario;
+    formData2.tipo_calcado_qual = tipo_calcado_qual;
     formData2.fumante = fumante;
-    formData2.menstruacao = menstruacao;
+    formData2.ciclo_menstruacao_regular = ciclo_menstruacao_regular;
     formData2.gestante = gestante;
-    formData2.dum = dum;
-    formData2.atividade = atividade;
-    formData2.atividade_frequencia = atividade_frequencia;
+    formData2.amamentando = amamentando;
+    formData2.dum = new Date(dum);
+    formData2.pratica_atividade_fisica = pratica_atividade_fisica;
+    formData2.frequencia_atividade = frequencia_atividade;
+    formData2.esporte_atividade = esporte_atividade;
+    formData2.tipo_calcado_esporte = tipo_calcado_esporte;
     
     res.redirect('/etapa3');
 };
@@ -217,35 +255,35 @@ export const etapa3 = (req: Request, res: Response) => {
 };
 
 export const etapa3Post = (req: Request, res: Response) => {
-    const { 
-        osteoporose, renal, epilepsia, quimioRadio, hipotiroidismo, hepatite, onco,
-        cardiopatia, hipertensao, reumatismo, hanseniase, cirurgiaMMII, marcaPasso, hipotensao, insulina,
-        dietaHidrica, injetavel, dietaAlimentar, viaOral, taxaGlicemica, vascular
+    const {
+        Osteoporose, Renal, Epilepsia, Quimioterapia_Radioterapia, Hipotiroidismo, Hepatite, Antecedente_Oncologico,
+        Cardiopatia, Hipotensao, Reumatismo, Hanseniase, Cirurgia_MMII, Marca_Passo, Hipertensao, Insulina,
+        Dieta_Hidrica, Injetavel, Dieta_Alimentar, Via_Oral, Taxa_Glicemica, Alteracoes_Vasculares
     } = req.body;
-
-
-    formData3.osteoporose = osteoporose;
-    formData3.renal = renal;
-    formData3.epilepsia = epilepsia;
-    formData3.quimioRadio = quimioRadio;
-    formData3.hipotiroidismo = hipotiroidismo;
-    formData3.hepatite = hepatite;
-    formData3.onco = onco;
-    formData3.cardiopatia = cardiopatia;
-    formData3.hipertensao = hipertensao;
-    formData3.reumatismo = reumatismo;
-    formData3.hanseniase = hanseniase;
-    formData3.cirurgiaMMII = cirurgiaMMII;
-    formData3.marcaPasso = marcaPasso;
-    formData3.hipotensao = hipotensao;
-    formData3.insulina = insulina;
-    formData3.dietaHidrica = dietaHidrica;
-    formData3.injetavel = injetavel;
-    formData3.dietaAlimentar = dietaAlimentar;
-    formData3.viaOral = viaOral;
-    formData3.taxaGlicemica = taxaGlicemica;
-    formData3.vascular = vascular;
-
+   
+    formData3.Osteoporose = Osteoporose;
+    formData3.Renal = Renal;
+    formData3.Epilepsia = Epilepsia;
+    formData3.Quimioterapia_Radioterapia = Quimioterapia_Radioterapia;
+    formData3.Hipotiroidismo = Hipotiroidismo;
+    formData3.Hepatite = Hepatite;
+    formData3.Antecedente_Oncologico = Antecedente_Oncologico;
+    formData3.Cardiopatia = Cardiopatia;
+    formData3.Hipertensao = Hipertensao;
+    formData3.Reumatismo = Reumatismo;
+    formData3.Hanseniase = Hanseniase;
+    formData3.Cirurgia_MMII = Cirurgia_MMII;
+    formData3.Marca_Passo = Marca_Passo;
+    formData3.Hipotensao = Hipotensao;
+    formData3.Insulina = Insulina;
+    formData3.Dieta_Hidrica = Dieta_Hidrica;
+    formData3.Injetavel = Injetavel;
+    formData3.Dieta_Alimentar = Dieta_Alimentar;
+    formData3.Via_Oral = Via_Oral;
+    formData3.Taxa_Glicemica = Taxa_Glicemica;
+    formData3.Alteracoes_Vasculares = Alteracoes_Vasculares;
+   
+   
     res.redirect('/etapa4');
 };
 
@@ -445,7 +483,9 @@ export const etapa9 = (req: Request, res: Response) => {
 
 export const submit = async (req: Request, res: Response) => {
     try {
+        await Etapa1.create(formData);
         await Etapa2.create(formData2);
+        await Etapa3.create(formData3);
         
         
         
@@ -456,6 +496,13 @@ export const submit = async (req: Request, res: Response) => {
         res.status(500).send('Erro ao salvar no banco de dados.');
     }
 };
+
+
+
+
+
+
+
 
 
 

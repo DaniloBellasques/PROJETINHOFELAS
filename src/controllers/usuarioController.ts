@@ -7,7 +7,9 @@ import { Consulta } from '../models/Consulta';
  // Remove this line
 import { DadosClinicos } from '../models/DadosClinicos';
 import { Etapa1 } from '../models/Etapa1';
+import { Etapa2 } from '../models/etapa2';
 import { Etapa3 } from '../models/etapa3';
+import { Etapa4 } from '../models/etapa4';
 
 
 
@@ -25,7 +27,7 @@ import { TipoMarcha } from '../models/TipoMarcha';
 import { TipoPerfusao } from '../models/TipoPerfusao';
 import { TipoPisada } from '../models/TipoPisada';
 import { TiposLesoes } from '../models/TiposLesoes';
-import { Etapa2 } from '../models/etapa2';
+
 export const index = (req: Request, res: Response) => {
     res.redirect('/etapa1');
 };
@@ -89,16 +91,21 @@ let formData3: {
 
 let formData4: {
     tipo_pisada?: string[];
-    flexivel?: string[];
-    rigido?: string[];
-    espalmado?: string[];
-    martelo?: string[];
-    queda_metatarso?: string[];
-    tipo_marcha?: string[];
-    qual_marcha?: string;
-    joelho?: string[];
-    articulacao?: string[];
-    sensibilidade?: string[];
+    flexivel_d?: boolean;
+    flexivel_e?: boolean;
+    rigido_d?: boolean;
+    rigido_e?: boolean;
+    espalmado_d?: boolean;
+    espalmado_e?: boolean;
+    martelo_d?: boolean;
+    martelo_e?: boolean;
+    queda_metatarso_d?: boolean;
+    queda_metatarso_e?: boolean;
+    tipo_marcha?: string;
+    marcha_descricao?: string;
+    joelho?: string;
+    articulacao?: string;
+    sensibilidade_dor?: string;
 } = {};
 
 let formData5 = {
@@ -289,40 +296,46 @@ export const etapa3Post = (req: Request, res: Response) => {
 
 
 export const etapa4 = (req: Request, res: Response) => {
-    res.render('etapa4', { resumo: formData });
+    res.render('etapa4', { resumo: formData4 });
 };
 
 export const etapa4Post = (req: Request, res: Response) => {
     const { 
         tipo_pisada, 
-        flexivel, 
-        rigido, 
-        espalmado, 
-        martelo, 
-        queda_metatarso, 
+        flexivel_d, flexivel_e, 
+        rigido_d, rigido_e, 
+        espalmado_d, espalmado_e, 
+        martelo_d, martelo_e, 
+        queda_metatarso_d, queda_metatarso_e, 
         tipo_marcha, 
-        qual_marcha, 
+        marcha_descricao, 
         joelho, 
         articulacao, 
-        sensibilidade 
+        sensibilidade_dor 
     } = req.body;
 
-    
-    formData4.tipo_pisada = tipo_pisada;
-    formData4.flexivel = flexivel;
-    formData4.rigido = rigido;
-    formData4.espalmado = espalmado;
-    formData4.martelo = martelo;
-    formData4.queda_metatarso = queda_metatarso;
-    formData4.tipo_marcha = tipo_marcha;
-    formData4.qual_marcha = qual_marcha;
-    formData4.joelho = joelho;
-    formData4.articulacao = articulacao;
-    formData4.sensibilidade = sensibilidade;
+    formData4 = {
+        tipo_pisada,
+        flexivel_d: flexivel_d === 'true',
+        flexivel_e: flexivel_e === 'true',
+        rigido_d: rigido_d === 'true',
+        rigido_e: rigido_e === 'true',
+        espalmado_d: espalmado_d === 'true',
+        espalmado_e: espalmado_e === 'true',
+        martelo_d: martelo_d === 'true',
+        martelo_e: martelo_e === 'true',
+        queda_metatarso_d: queda_metatarso_d === 'true',
+        queda_metatarso_e: queda_metatarso_e === 'true',
+        tipo_marcha,
+        marcha_descricao,
+        joelho,
+        articulacao,
+        sensibilidade_dor
+    };
 
-    
     res.redirect('/etapa5'); 
 };
+
 
 export const etapa5 = (req: Request, res: Response) => {
     res.render('etapa5', { resumo: formData });
@@ -483,9 +496,10 @@ export const etapa9 = (req: Request, res: Response) => {
 
 export const submit = async (req: Request, res: Response) => {
     try {
-        await Etapa1.create(formData);
+        /*await Etapa1.create(formData);
         await Etapa2.create(formData2);
-        await Etapa3.create(formData3);
+        await Etapa3.create(formData3);*/
+        await Etapa4.create(formData4);
         
         
         

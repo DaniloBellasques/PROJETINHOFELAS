@@ -208,6 +208,67 @@ if (document.querySelector('input[name="Alteracoes_Vasculares"]:checked')) {
     sessionStorage.setItem('Alteracoes_Vasculares', document.querySelector('input[name="Alteracoes_Vasculares"]:checked').value);
 }
 
+if (document.querySelector('input[name="Flexível_E"]:checked')) {
+    sessionStorage.setItem('Flexível_E', document.querySelector('input[name="Flexível_E"]:checked').value);
+}
+
+if (document.querySelector('input[name="Rígido_D"]:checked')) {
+    sessionStorage.setItem('Rígido_D', document.querySelector('input[name="Rígido_D"]:checked').value);
+}
+
+if (document.querySelector('input[name="Rígido_E"]:checked')) {
+    sessionStorage.setItem('Rígido_E', document.querySelector('input[name="Rígido_E"]:checked').value);
+}
+
+if (document.querySelector('input[name="Espalmado_D"]:checked')) {
+    sessionStorage.setItem('Espalmado_D', document.querySelector('input[name="Espalmado_D"]:checked').value);
+}
+
+if (document.querySelector('input[name="Espalmado_E"]:checked')) {
+    sessionStorage.setItem('Espalmado_E', document.querySelector('input[name="Espalmado_E"]:checked').value);
+}
+
+if (document.querySelector('input[name="Martelo_D"]:checked')) {
+    sessionStorage.setItem('Martelo_D', document.querySelector('input[name="Martelo_D"]:checked').value);
+}
+
+if (document.querySelector('input[name="Martelo_E"]:checked')) {
+    sessionStorage.setItem('Martelo_E', document.querySelector('input[name="Martelo_E"]:checked').value);
+}
+
+if (document.querySelector('input[name="Queda_Metatarso_D"]:checked')) {
+    sessionStorage.setItem('Queda_Metatarso_D', document.querySelector('input[name="Queda_Metatarso_D"]:checked').value);
+}
+
+if (document.querySelector('input[name="Queda_Metatarso_E"]:checked')) {
+    sessionStorage.setItem('Queda_Metatarso_E', document.querySelector('input[name="Queda_Metatarso_E"]:checked').value);
+}
+
+if (document.getElementById('Tipo_Marcha')) {
+    sessionStorage.setItem('Tipo_Marcha', document.getElementById('Tipo_Marcha').value);
+}
+
+if (document.getElementById('Marcha_Descricao')) {
+    sessionStorage.setItem('Marcha_Descricao', document.getElementById('Marcha_Descricao').value);
+}
+
+if (document.getElementById('Joelho')) {
+    sessionStorage.setItem('Joelho', document.getElementById('Joelho').value);
+}
+
+if (document.getElementById('Articulacao')) {
+    sessionStorage.setItem('Articulacao', document.getElementById('Articulacao').value);
+}
+
+if (document.getElementById('Sensibilidade_Dor')) {
+    sessionStorage.setItem('Sensibilidade_Dor', document.getElementById('Sensibilidade_Dor').value);
+}
+
+if (document.getElementById('id_cliente')) {
+    sessionStorage.setItem('id_cliente', document.getElementById('id_cliente').value);
+}
+
+
 // Submission function
 function submitEtapa3Data() {
     // Create etapa3Data object from sessionStorage
@@ -270,48 +331,273 @@ function submitEtapa3Data() {
             event.preventDefault(); // Prevent default form submission
             submitEtapa3Data(); // Call our custom submission function
           });
+
+          
    
     //etapa4
-    document.getElementById('submit-button').addEventListener('click', () => {
-        // Seleciona apenas os checkboxes dentro do contêiner #condicoes-pe
-        const checkboxes = document.querySelectorAll('#condicoes_pe input[type="checkbox"]');
-     
-        const selecoes = [];
-        checkboxes.forEach((checkbox) => {
-          selecoes.push({
-            id_condicao_pe: parseInt(checkbox.dataset.condicao),
-            id_lado_pe: parseInt(checkbox.value),
-            selecionado: checkbox.checked
-          });
-        });
-     
-        console.log(selecoes); // Envia ou processa os dados normalmente
-      });
- 
-      // Salvar os dados temporariamente no sessionStorage
-    const form = document.getElementById('form-avaliacao');
-    const submitButton = document.getElementById('submit-button');
- 
-    form.addEventListener('change', () => {
-      // Captura as seleções do formulário
-      const tipoMarcha = document.querySelector('input[name="tipo_marcha"]:checked')?.value || null;
-      const marchaDetalhe = document.getElementById('marcha-detalhe').value || null;
-      const joelho = document.querySelector('input[name="joelho"]:checked')?.value || null;
-      const articulacao = document.querySelector('input[name="articulacao"]:checked')?.value || null;
-      const sensibilidade = document.querySelector('input[name="sensibilidade"]:checked')?.value || null;
- 
-      // Cria um objeto com os dados atuais
-      const avaliacao = {
-        tipo_marcha: tipoMarcha,
-        marcha_detalhe: marchaDetalhe,
-        joelho: joelho,
-        articulacao: articulacao,
-        sensibilidade: sensibilidade,
-      };
- 
-      // Salva no sessionStorage
-      sessionStorage.setItem('avaliacao', JSON.stringify(avaliacao));
+   // Função para armazenar os dados da Etapa 4 na sessionStorage
+function saveEtapa4Data() {
+    // Campos adicionais para armazenamento na sessionStorage para a Etapa 4
+    const fields = [
+        'Flexível_E', 'Rígido_D', 'Rígido_E', 'Espalmado_D', 'Espalmado_E', 
+        'Martelo_D', 'Martelo_E', 'Queda_Metatarso_D', 'Queda_Metatarso_E', 
+        'Tipo_Marcha', 'Marcha_Descricao', 'Joelho', 'Articulacao', 'Sensibilidade_Dor'
+    ];
+
+    // Itera sobre os campos e armazena o valor correspondente na sessionStorage
+    fields.forEach(field => {
+        const element = document.querySelector(`input[name="${field}"]:checked`);
+        if (element) {
+            sessionStorage.setItem(field, element.value); // Para booleanos ou ENUM
+        } else {
+            // Para o campo de descrição (textos ou casos de não seleção)
+            const textElement = document.querySelector(`input[name="${field}"]`);
+            if (textElement) {
+                sessionStorage.setItem(field, textElement.value); // Caso tenha um campo de texto como descrição
+            }
+        }
     });
+
+    // Armazenando o id_cliente
+    const idCliente = document.querySelector('input[name="id_cliente"]').value;
+    sessionStorage.setItem('id_cliente', idCliente);
+}
+
+// Função de submissão para a Etapa 4
+function submitEtapa4Data() {
+    // Criação do objeto com os dados a serem enviados para a Etapa 4
+    const etapa4Data = {
+        Flexível_E: sessionStorage.getItem('Flexível_E'),
+        Rígido_D: sessionStorage.getItem('Rígido_D'),
+        Rígido_E: sessionStorage.getItem('Rígido_E'),
+        Espalmado_D: sessionStorage.getItem('Espalmado_D'),
+        Espalmado_E: sessionStorage.getItem('Espalmado_E'),
+        Martelo_D: sessionStorage.getItem('Martelo_D'),
+        Martelo_E: sessionStorage.getItem('Martelo_E'),
+        Queda_Metatarso_D: sessionStorage.getItem('Queda_Metatarso_D'),
+        Queda_Metatarso_E: sessionStorage.getItem('Queda_Metatarso_E'),
+        Tipo_Marcha: sessionStorage.getItem('Tipo_Marcha'),
+        Marcha_Descricao: sessionStorage.getItem('Marcha_Descricao'),
+        Joelho: sessionStorage.getItem('Joelho'),
+        Articulacao: sessionStorage.getItem('Articulacao'),
+        Sensibilidade_Dor: sessionStorage.getItem('Sensibilidade_Dor'),
+        id_cliente: sessionStorage.getItem('id_cliente') // Certifique-se de que o id_cliente está corretamente salvo
+    };
+
+    // Log para depuração
+    console.log('Submitting Etapa4 Data:', etapa4Data);
+
+    // Envia os dados para o Sequelize (ajuste conforme necessário)
+    Etapa4.create(etapa4Data)
+        .then(result => {
+            console.log('Data inserted successfully:', result);
+
+            // Limpa o sessionStorage após a submissão bem-sucedida
+            Object.keys(etapa4Data).forEach(key => {
+                if (key !== 'id_cliente') {
+                    sessionStorage.removeItem(key);
+                }
+            });
+
+            // Redireciona ou exibe mensagem de sucesso
+            window.location.href = '/next-step'; // Ajuste conforme necessário
+        })
+        .catch(error => {
+            console.error('Error inserting data:', error);
+            if (error.errors) {
+                error.errors.forEach(err => {
+                    console.error(`${err.path}: ${err.message}`);
+                });
+            }
+            alert('Erro ao salvar dados. Por favor, verifique as informações e tente novamente.');
+        });
+}
+
+// Atachando a função de submissão ao evento de envio do formulário
+document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
+    saveEtapa4Data();         // Salva os dados no sessionStorage
+    submitEtapa4Data();       // Chama a função de submissão personalizada para Etapa 4
+});
+
+
+    //saveData ETAPA4
+
+    // Coletando dados dos checkboxes e armazenando no sessionStorage
+// Tipo de Pisada (single selection)
+const tipoPisada = document.querySelector('input[name="Tipo_Pisada"]:checked')?.value || '';
+if (tipoPisada) {
+    sessionStorage.setItem('tipo_pisada', JSON.stringify(tipoPisada));
+}
+
+// Flexível (single selection)
+const Flexivel_D = document.querySelector('input[name="Flexivel_D"]:checked')?.value || '';
+if (flexivel) {
+    sessionStorage.setItem('flexivel', JSON.stringify(flexivel));
+}
+
+const Flexivel_E = document.querySelector('input[name="Flexivel_E"]:checked')?.value || '';
+if (flexivel) {
+    sessionStorage.setItem('flexivel', JSON.stringify(flexivel));
+}
+
+// Similar pattern for other radio button groups:
+const Rigido_D = document.querySelector('input[name="Rigido_D"]:checked')?.value || '';
+if (rigido) {
+    sessionStorage.setItem('rigido', JSON.stringify(rigido));
+}
+
+const Rigido_E = document.querySelector('input[name="Rigido_E"]:checked')?.value || '';
+if (rigido) {
+    sessionStorage.setItem('rigido', JSON.stringify(rigido));
+}
+
+const Espalmado_D = document.querySelector('input[name="Espalmado_D"]:checked')?.value || '';
+if (espalmado) {
+    sessionStorage.setItem('espalmado', JSON.stringify(espalmado));
+}
+
+const Espalmado_E = document.querySelector('input[name="Espalmado_E"]:checked')?.value || '';
+if (espalmado) {
+    sessionStorage.setItem('espalmado', JSON.stringify(espalmado));
+}
+
+const Martelo_D = document.querySelector('input[name="Martelo_D"]:checked')?.value || '';
+if (martelo) {
+    sessionStorage.setItem('martelo', JSON.stringify(martelo));
+}
+
+const Martelo_E = document.querySelector('input[name="Martelo_D"]:checked')?.value || '';
+if (martelo) {
+    sessionStorage.setItem('martelo', JSON.stringify(martelo));
+}
+
+const Queda_Metatarso_D = document.querySelector('input[name="Queda_Metatarso_D"]:checked')?.value || '';
+if (quedaMetatarso) {
+    sessionStorage.setItem('queda_metatarso', JSON.stringify(quedaMetatarso));
+}
+
+const Queda_Metatarso_E = document.querySelector('input[name="Queda_Metatarso_E"]:checked')?.value || '';
+if (quedaMetatarso) {
+    sessionStorage.setItem('queda_metatarso', JSON.stringify(quedaMetatarso));
+}
+
+const tipoMarcha = document.querySelector('input[name="Tipo_Marcha"]:checked')?.value || '';
+if (tipoMarcha) {
+    sessionStorage.setItem('tipo_marcha', JSON.stringify(tipoMarcha));
+}
+
+const qualMarcha = document.getElementById('inputText')?.value || '';
+if (qualMarcha) {
+    sessionStorage.setItem('qual_marcha', qualMarcha);
+}
+
+const joelho = document.querySelector('input[name="Joelho"]:checked')?.value || '';
+if (joelho) {
+    sessionStorage.setItem('joelho', JSON.stringify(joelho));
+}
+
+const articulacao = document.querySelector('input[name="Articulacao"]:checked')?.value || '';
+if (articulacao) {
+    sessionStorage.setItem('articulacao', JSON.stringify(articulacao));
+}
+
+const sensibilidade = document.querySelector('input[name="Sensibilidade_Dor"]:checked')?.value || '';
+if (sensibilidade) {
+    sessionStorage.setItem('sensibilidade', JSON.stringify(sensibilidade));
+}
+
+document.getElementById('formulario_boolean').addEventListener('submit', function(event) {
+    event.preventDefault();  // Evita o envio padrão do formulário
+
+    // Captura os valores dos checkboxes de tipo de pisada
+    const tipoPisada = sessionStorage.from(document.querySelectorAll('input[name="tipo_pisada[]"]:checked'))
+        .map(checkbox => checkbox.value);
+
+    // Captura os valores dos checkboxes de Flexível
+    const flexivel_E = sessionStorage.from(document.querySelectorAll('input[name="flexivel[]"]:checked'))
+        .map(checkbox => checkbox.value);
+    const flexivel_D = sessionStorage.from(document.querySelectorAll('input[name="flexivel[]"]:checked'))
+        .map(checkbox => checkbox.value);
+
+    // Captura os valores dos checkboxes de Rígido
+    const rigido_E= sessionStorage.from(document.querySelectorAll('input[name="rigido[]"]:checked'))
+        .map(checkbox => checkbox.value);
+    const rigido_D= sessionStorage.from(document.querySelectorAll('input[name="rigido[]"]:checked'))
+        .map(checkbox => checkbox.value);
+
+
+    // Captura os valores dos checkboxes de Espalmado
+    const espalmado_E = sessionStorage.from(document.querySelectorAll('input[name="espalmado[]"]:checked'))
+        .map(checkbox => checkbox.value);
+    const espalmado_D = sessionStorage.from(document.querySelectorAll('input[name="espalmado[]"]:checked'))
+        .map(checkbox => checkbox.value);
+
+
+    // Captura os valores dos checkboxes de Martelo
+    const martelo_E = sessionStorage.from(document.querySelectorAll('input[name="martelo[]"]:checked'))
+        .map(checkbox => checkbox.value);
+    const martelo_D = sessionStorage.from(document.querySelectorAll('input[name="martelo[]"]:checked'))
+        .map(checkbox => checkbox.value);
+
+    // Captura os valores dos checkboxes de Queda de Metatarso
+    const quedaMetatarso_E = sessionStorage.from(document.querySelectorAll('input[name="queda_metatarso[]"]:checked'))
+        .map(checkbox => checkbox.value);
+    const quedaMetatarso_D = sessionStorage.from(document.querySelectorAll('input[name="queda_metatarso[]"]:checked'))
+        .map(checkbox => checkbox.value);
+
+    // Aqui você tem todos os valores selecionados, agora pode enviar para o backend
+    fetch('/etapa4', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            tipoPisada: tipoPisada,
+            flexivel_E: flexivel_E,
+            flexivel_D: flexivel_D,
+            rigido_E: rigido_E,
+            rigido_D: rigido_D,
+            espalmado_E: espalmado_E,
+            espalmado_D: espalmado_D,
+            martelo_E: martelo_E,
+            martelo_D: martelo_D,
+            quedaMetatarso_E: quedaMetatarso_E,
+            quedaMetatarso_D: quedaMetatarso_D
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Resposta do servidor:', data);
+    })
+    .catch(error => {
+        console.error('Erro ao enviar os dados:', error);
+    });
+});
+
+// Função para enviar os dados da etapa 4
+function submitEtapa4Data() {
+    const etapa4Data = {
+        tipo_pisada: JSON.parse(sessionStorage.getItem('tipo_pisada')),
+        flexivel: JSON.parse(sessionStorage.getItem('flexivel')),
+        rigido: JSON.parse(sessionStorage.getItem('rigido')),
+        espalmado: JSON.parse(sessionStorage.getItem('espalmado')),
+        martelo: JSON.parse(sessionStorage.getItem('martelo')),
+        queda_metatarso: JSON.parse(sessionStorage.getItem('queda_metatarso')),
+        tipo_marcha: JSON.parse(sessionStorage.getItem('tipo_marcha')),
+        qual_marcha: sessionStorage.getItem('qual_marcha'),
+        joelho: JSON.parse(sessionStorage.getItem('joelho')),
+        articulacao: JSON.parse(sessionStorage.getItem('articulacao')),
+        sensibilidade: JSON.parse(sessionStorage.getItem('sensibilidade')),
+        id_cliente: sessionStorage.getItem('id_cliente') // Certifique-se de que isso está definido
+    };
+
+    // Enviar os dados (por exemplo, para o backend)
+    console.log('Dados da Etapa 4:', etapa4Data);
+
+    // Aqui você pode enviar os dados para o backend via AJAX ou outro método
+}
+
  
     // Ao clicar em "Enviar", imprime os dados salvos e envia ao backend
     submitButton.addEventListener('click', () => {
@@ -346,6 +632,8 @@ function nextStep() {
         nextPage = '/etapa3';
     } else if (window.location.pathname.includes('etapa3')) {
         nextPage = '/etapa4'
+    }else if (window.location.pathname.includes('etapa4')) {
+        nextPage = '/etapa5'
     }
  
     if (nextPage) {
@@ -538,20 +826,7 @@ function clearForm() {
 }
 
 // Avançar para a próxima etapa
-function nextStep() {
-    saveData();
-    let nextPage = '';
 
-    if (window.location.pathname.includes('etapa1')) {
-        nextPage = '/etapa2';
-    } else if (window.location.pathname.includes('etapa2')) {
-        nextPage = '/etapa3';
-    }
-
-    if (nextPage) {
-        window.location.href = nextPage;
-    }
-}
 
 // Voltar para a etapa anterior
 function previousStep() {
@@ -747,4 +1022,153 @@ db.connect((err) => {
 
 
 
+// Etapa 3 handling
+function saveEtapa3Data() {
+    const fields = [
+      'Osteoporose', 'Renal', 'Epilepsia', 'Quimioterapia_Radioterapia',
+      'Hipotireoidismo', 'Hepatite', 'Antecedente_Oncologico', 'Cardiopatia',
+      'Hipertensao', 'Reumatismo', 'Hanseniase', 'Cirurgia_MMII', 'Marca_Passo',
+      'Hipotensao', 'Insulina', 'Dieta_Hidrica', 'Injetavel', 'Dieta_Alimentar',
+      'Via_Oral', 'Taxa_Glicemica', 'Alteracoes_Vasculares'
+    ];
+  
+    fields.forEach(field => {
+      const element = document.querySelector(`input[name="${field}"]:checked`);
+      if (element) {
+        sessionStorage.setItem(field, element.value);
+      }
+    });
+  
+    const idCliente = document.querySelector('input[name="id_cliente"]').value;
+    sessionStorage.setItem('id_cliente', idCliente);
+  }
+  
+  function submitEtapa3Data() {
+    const etapa3Data = {};
+    for (const field of Object.keys(sessionStorage)) {
+      if (field !== 'id_cliente') {
+        etapa3Data[field] = sessionStorage.getItem(field);
+      }
+    }
+    etapa3Data.id_cliente = sessionStorage.getItem('id_cliente');
+  
+    console.log('Submitting Etapa3 Data:', etapa3Data);
+    Etapa3.create(etapa3Data)
+      .then(result => {
+        console.log('Data inserted successfully:', result);
+        clearEtapa3SessionStorage();
+        window.location.href = '/next-step';
+      })
+      .catch(error => {
+        console.error('Error inserting data:', error);
+        alert('Error saving data. Please check the information and try again.');
+      });
+  }
+  
+  function clearEtapa3SessionStorage() {
+    for (const field of Object.keys(sessionStorage)) {
+      if (field !== 'id_cliente') {
+        sessionStorage.removeItem(field);
+      }
+    }
+  }
+  
+  // Etapa 4 handling
+  function saveEtapa4Data() {
+    const fields = [
+      'Flexível_E', 'Rígido_D', 'Rígido_E', 'Espalmado_D', 'Espalmado_E',
+      'Martelo_D', 'Martelo_E', 'Queda_Metatarso_D', 'Queda_Metatarso_E',
+      'Tipo_Marcha', 'Marcha_Descricao', 'Joelho', 'Articulacao', 'Sensibilidade_Dor'
+    ];
+  
+    fields.forEach(field => {
+      const element = document.querySelector(`input[name="${field}"]:checked`);
+      if (element) {
+        sessionStorage.setItem(field, element.value);
+      } else {
+        const textElement = document.querySelector(`input[name="${field}"]`);
+        if (textElement) {
+          sessionStorage.setItem(field, textElement.value);
+        }
+      }
+    });
+  
+    const idCliente = document.querySelector('input[name="id_cliente"]').value;
+    sessionStorage.setItem('id_cliente', idCliente);
+  }
+  
+  function submitEtapa4Data() {
+    const etapa4Data = {};
+    for (const field of Object.keys(sessionStorage)) {
+      if (field !== 'id_cliente') {
+        etapa4Data[field] = sessionStorage.getItem(field);
+      }
+    }
+    etapa4Data.id_cliente = sessionStorage.getItem('id_cliente');
+  
+    console.log('Submitting Etapa4 Data:', etapa4Data);
+    Etapa4.create(etapa4Data)
+      .then(result => {
+        console.log('Data inserted successfully:', result);
+        clearEtapa4SessionStorage();
+        window.location.href = '/next-step';
+      })
+      .catch(error => {
+        console.error('Error inserting data:', error);
+        alert('Error saving data. Please check the information and try again.');
+      });
+  }
+  
+  function clearEtapa4SessionStorage() {
+    for (const field of Object.keys(sessionStorage)) {
+      if (field !== 'id_cliente') {
+        sessionStorage.removeItem(field);
+      }
+    }
+  }
 
+  // Ao criar um novo registro
+await Etapa4.create({
+    id_cliente: clienteId, // Adicione este campo
+    // ... outros campos
+  });
+  
+  // Ou ao atualizar
+  await etapa4Instance.save({
+    id_cliente: clienteId,
+    // ... outros campos
+  });
+  const Etapa4 = sequelize.define('Etapa4', {
+    id_cliente: {
+      type: DataTypes.INTEGER,
+      allowNull: false, // Esta configuração exige que o campo não seja nulo
+      references: {
+        model: 'Clientes', // ou o nome da sua tabela de clientes
+        key: 'id_cliente'
+      }
+    },
+    // ... outros campos
+  });
+  
+
+  try {
+    const Etapa4 = await Etapa4.create({
+        id_cliente: idDoCliente, // Este valor não pode ser null
+        // outros campos necessários...
+    });
+} catch (error) {
+    console.error('Erro ao criar Etapa4:', error);
+}
+
+const data = {
+    Flexivel_D: req.body.Flexivel_D === "1" ? 1 : 0,
+    Flexivel_E: req.body.Flexivel_E === "1" ? 1 : 0,
+    Rigido_D: req.body.Rigido_D === "1" ? 1 : 0,
+    Rigido_E: req.body.Rigido_E === "1" ? 1 : 0,
+    Espalmado_D: req.body.Espalmado_D === "1" ? 1 : 0,
+    Espalmado_E: req.body.Espalmado_E === "1" ? 1 : 0,
+    Martelo_D: req.body.Martelo_D === "1" ? 1 : 0,
+    Martelo_E: req.body.Martelo_E === "1" ? 1 : 0,
+    Queda_Metatarso_D: req.body.Queda_Metatarso_D === "1" ? 1 : 0,
+    Queda_Metatarso_E: req.body.Queda_Metatarso_E === "1" ? 1 : 0,
+};
